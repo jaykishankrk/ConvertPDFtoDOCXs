@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Continuous Integration - Static code analysis
 
 on: [push, pull_request]
 
@@ -10,4 +10,6 @@ jobs:
         uses: actions/checkout@main
 
       - name: Check python code for errors
-        uses: cclauss/GitHub-Action-for-pylint@0.7.0
+        run: |
+          pip install pylint
+          pylint ./ConvertPDFtoDOCXs/**/*.py

@@ -1,8 +1,9 @@
 import os
 import ntpath
 import ctypes
-from pdf2docx import Converter
 import tkinter as tk
+from tkinter import filedialog
+from pdf2docx import Converter
 
 
 # function to retrieve filename from absolute path.
@@ -34,7 +35,6 @@ def call_external_convert(pdf_file, doc_file):
 
 
 def convert_pdf_to_docx():
-    from tkinter import filedialog
     root = tk.Tk()
     root.withdraw()
 

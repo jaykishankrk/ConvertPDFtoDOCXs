@@ -1,3 +1,4 @@
+"""Application to convert PDF to Microsoft work document"""
 import os
 import ntpath
 import ctypes

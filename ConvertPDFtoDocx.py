@@ -8,6 +8,7 @@ from pdf2docx import Converter
 
 # function to retrieve filename from absolute path.
 def retrieve_filename(path_and_filename):
+    """Splits filename and path"""
     # Split the filename and pathname
     path_name, file_name = ntpath.split(path_and_filename)
     # return filename if it exists or else the whole path as is.
@@ -23,11 +24,13 @@ def retrieve_filename(path_and_filename):
 # 5 : Retry | Cancel
 # 6 : Cancel | Try Again | Continue
 def popup_msg(title, text, style):
+    """Creates a popup window for messaging"""
     return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
 
 # Steps below are used to convert PDF to DOCX one file at a time.
 def call_external_convert(pdf_file, doc_file):
+    """Converts PDF to DOCX"""
     conv_PDF_to_Doc = Converter(pdf_file)
     conv_PDF_to_Doc.convert(doc_file)
     conv_PDF_to_Doc.close()
@@ -35,6 +38,7 @@ def call_external_convert(pdf_file, doc_file):
 
 
 def convert_pdf_to_docx():
+    """Function to handle multiple PDF to DOCX conversion"""
     root = tk.Tk()
     root.withdraw()
 
@@ -66,20 +70,20 @@ def convert_pdf_to_docx():
         doc_file = doc_file_folder + "/" + target_filename + ".docx"
 
         # check to see if the PDF file is readable or not.
-        pdf_file_id = open(pdf_file, "r")
-        if not pdf_file_id.readable():
-            popup_msg("ConvertPDF2Docx", "PDF File is not readable. bypassing the file...", 0)
+        with open(pdf_file, "r", encoding="utf-8") as pdf_file_id:
+            if not pdf_file_id.readable():
+                popup_msg("ConvertPDF2Docx", "PDF File is not readable. bypassing the file...", 0)
+                pdf_file_id.close()
+                continue
             pdf_file_id.close()
-            continue
-        pdf_file_id.close()
 
         # check to see if the target file is writable or not.
-        doc_file_id = open(doc_file, "w")
-        if not doc_file_id.writable():
-            popup_msg("ConvertPDF2Docx", "DOC File is not writable. bypassing the file...", 0)
+        with open(doc_file, "w", encoding="utf-8") as doc_file_id:
+            if not doc_file_id.writable():
+                popup_msg("ConvertPDF2Docx", "DOC File is not writable. bypassing the file...", 0)
+                doc_file_id.close()
+                continue
             doc_file_id.close()
-            continue
-        doc_file_id.close()
 
         # Call CovertPDF2Docx function
         ret_val = call_external_convert(pdf_file, doc_file)

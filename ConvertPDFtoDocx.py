@@ -26,14 +26,14 @@ def popup_msg(title, text, style):
 
 
 # Steps below are used to convert PDF to DOCX one file at a time.
-def convert_pdf_2_docx(pdf_file, doc_file):
+def call_external_convert(pdf_file, doc_file):
     convPDFtoDoc = Converter(pdf_file)
     convPDFtoDoc.convert(doc_file)
     convPDFtoDoc.close()
     return True
 
 
-def ConvertPDF_to_Docx():
+def convert_pdf_to_docx():
     from tkinter import filedialog
     root = tk.Tk()
     root.withdraw()
@@ -48,7 +48,8 @@ def ConvertPDF_to_Docx():
     # opens folder dialog to select target folder path.
     doc_file_folder = filedialog.askdirectory()
 
-    # declare return value placeholder to identify if there was at the least one successful conversion.
+    # declare return value placeholder to identify if there was
+    # at the least one successful conversion.
     retVal = False
 
     # Iterate through list of PDF files selected and convert the same to docx.
@@ -56,7 +57,8 @@ def ConvertPDF_to_Docx():
         # check to make sure the files selected are indeed PDF files.
         filename, file_extension = os.path.splitext(pdf_file)
         if file_extension.upper() != ".PDF":
-            popup_msg("ConvertPDF2Docx", "File : " + pdf_file + " is not a PDF File, bypassing the file...", 0)
+            popup_msg("ConvertPDF2Docx", "File : " + pdf_file +
+                      " is not a PDF File, bypassing the file...", 0)
             continue
 
         # get the target filename
@@ -80,13 +82,13 @@ def ConvertPDF_to_Docx():
             doc_file_cntID.close()
 
         # Call CovertPDF2Docx function
-        retVal = convert_pdf_2_docx(pdf_file, doc_file)
+        retVal = call_external_convert(pdf_file, doc_file)
 
     return retVal
 
 
 # run main program
-if ConvertPDF_to_Docx():
+if convert_pdf_to_docx():
     popup_msg("ConvertPDF2Docx", "PDF/PDFs were converted successfully to Microsoft documents", 0)
 else:
     popup_msg("ConvertPDF2Docx", "Conversion of PDF/PDFs to Microsoft documents FAILED!!!", 0)

@@ -11,5 +11,6 @@ jobs:
 
       - name: Check python code for errors
         run: |
+          ls -al
           pip install pylint
-          pylint ./ConvertPDFtoDOCXs/**/*.py
+          pylint ./**/*.py

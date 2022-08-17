@@ -1,0 +1,15 @@
+name: Continuous Integration - Static code analysis
+
+on: [push, pull_request]
+
+jobs:
+  static-code-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Check python code for errors
+        run: |
+          pip install pylint
+          pylint *.py

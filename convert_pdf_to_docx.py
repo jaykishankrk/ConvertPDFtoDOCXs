@@ -32,9 +32,9 @@ def popup_msg(title, text, style):
 # Steps below are used to convert PDF to DOCX one file at a time.
 def call_external_convert(pdf_file, doc_file):
     """Converts PDF to DOCX"""
-    conv_PDF_to_Doc = Converter(pdf_file)
-    conv_PDF_to_Doc.convert(doc_file)
-    conv_PDF_to_Doc.close()
+    conv_pdf_to_doc = Converter(pdf_file)
+    conv_pdf_to_doc.convert(doc_file)
+    conv_pdf_to_doc.close()
     return True
 
 

@@ -11,6 +11,5 @@ jobs:
 
       - name: Check python code for errors
         run: |
-          ls -al
           pip install pylint
-          pylint ./**/*.py
+          pylint *.py

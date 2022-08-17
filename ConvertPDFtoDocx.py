@@ -27,9 +27,9 @@ def popup_msg(title, text, style):
 
 # Steps below are used to convert PDF to DOCX one file at a time.
 def call_external_convert(pdf_file, doc_file):
-    convPDFtoDoc = Converter(pdf_file)
-    convPDFtoDoc.convert(doc_file)
-    convPDFtoDoc.close()
+    conv_PDF_to_Doc = Converter(pdf_file)
+    conv_PDF_to_Doc.convert(doc_file)
+    conv_PDF_to_Doc.close()
     return True
 
 
@@ -50,7 +50,7 @@ def convert_pdf_to_docx():
 
     # declare return value placeholder to identify if there was
     # at the least one successful conversion.
-    retVal = False
+    ret_val = False
 
     # Iterate through list of PDF files selected and convert the same to docx.
     for pdf_file in pdf_files:
@@ -66,25 +66,25 @@ def convert_pdf_to_docx():
         doc_file = doc_file_folder + "/" + target_filename + ".docx"
 
         # check to see if the PDF file is readable or not.
-        pdf_file_cntID = open(pdf_file, "r")
-        if not pdf_file_cntID.readable():
+        pdf_file_id = open(pdf_file, "r")
+        if not pdf_file_id.readable():
             popup_msg("ConvertPDF2Docx", "PDF File is not readable. bypassing the file...", 0)
+            pdf_file_id.close()
             continue
-        else:
-            pdf_file_cntID.close()
+        pdf_file_id.close()
 
         # check to see if the target file is writable or not.
-        doc_file_cntID = open(doc_file, "w")
-        if not doc_file_cntID.writable():
+        doc_file_id = open(doc_file, "w")
+        if not doc_file_id.writable():
             popup_msg("ConvertPDF2Docx", "DOC File is not writable. bypassing the file...", 0)
+            doc_file_id.close()
             continue
-        else:
-            doc_file_cntID.close()
+        doc_file_id.close()
 
         # Call CovertPDF2Docx function
-        retVal = call_external_convert(pdf_file, doc_file)
+        ret_val = call_external_convert(pdf_file, doc_file)
 
-    return retVal
+    return ret_val
 
 
 # run main program

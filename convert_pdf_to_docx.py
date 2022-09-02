@@ -1,4 +1,4 @@
-"""Application to convert PDF to Microsoft work document"""
+"""Application to convert PDF to Microsoft Word document"""
 import os
 import ntpath
 import ctypes

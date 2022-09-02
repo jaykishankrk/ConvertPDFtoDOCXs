@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="78137816-5cb9-4764-bfab-9e4f1b1125be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConvertPDFtoDOCX/convert_pdf_to_docx.py" beforeDir="false" afterPath="$PROJECT_DIR$/ConvertPDFtoDOCX/convert_pdf_to_docx.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MergePDFFIles/merge_pdf_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/MergePDFFIles/merge_pdf_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert_pdf_to_docx.py" beforeDir="false" afterPath="$PROJECT_DIR$/convert_pdf_to_docx.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

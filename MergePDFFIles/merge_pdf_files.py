@@ -94,9 +94,8 @@ def merge_multiple_pdfs_into_one():
     return ret_val
 
 
-IS_MERGE_SUCCESSFUL = merge_multiple_pdfs_into_one()
-
-if IS_MERGE_SUCCESSFUL:
+# Call main module to merge multiple files...
+if merge_multiple_pdfs_into_one():
     popup_msg("MergePDFFiles", "Merging Multiple PDF File was Successful.", 0)
 else:
     popup_msg("MergePDFFiles", "Merging Multiple PDF File was Unsuccessful.", 0)

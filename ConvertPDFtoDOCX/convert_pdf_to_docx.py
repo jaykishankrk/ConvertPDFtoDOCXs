@@ -96,7 +96,8 @@ def convert_pdf_to_docx():
 if convert_pdf_to_docx():
     popup_msg("ConvertPDF2Docx", "PDF/PDFs were converted successfully to Microsoft documents", 0)
 else:
-    popup_msg("ConvertPDF2Docx", "Either you didn't select the files to convert or conversion of PDF/PDFs to Microsoft "
+    popup_msg("ConvertPDF2Docx", "Either you didn't select the files to convert or conversion of "
+                                 "PDF/PDFs to Microsoft "
                                  "documents FAILED!!!", 0)
 
 # End of program.

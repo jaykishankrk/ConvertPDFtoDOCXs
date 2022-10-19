@@ -67,9 +67,17 @@ def download_you_vid_in_mp3():
     out_file = video.download(output_path=mp3_file_folder)
 
     # save the file
-    base = retrieve_filename(out_file)
-    new_file = base + '.mp3'
-    os.rename(out_file, new_file)
+    # Get the filename as step 1
+    base_file_name_with_ext = retrieve_filename(out_file)
+
+    # split the filename from extension as step 2.
+    filename = os.path.splitext(base_file_name_with_ext)
+
+    # Ready the Target MP3 filename.
+    new_file = filename[0] + '.mp3'
+
+    # Rename the original file to Mp3.
+    os.rename(out_file, mp3_file_folder + "/" + new_file)
     return True, youtube_obj.title
 
 
